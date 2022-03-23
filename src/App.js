@@ -4,7 +4,7 @@ const SPOTIFY_CLIENT_ID = process.env.REACT_APP_SPOTIFY;
  function App() {
   return (
     <div className="App">
-      <div>
+      <div className="album">
         <img src={data.album.images[0].url} width="300" height="300" className="rotate" />
       </div>
       <div>
