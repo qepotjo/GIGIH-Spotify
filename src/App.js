@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import data from './data/data.js';
 import './App.css';
 const SPOTIFY_CLIENT_ID = process.env.REACT_APP_SPOTIFY;
-function App() {
+ function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <img src={data.album.images[0].url} width="300" height="300" className="rotate" />
+      </div>
+      <div>
+        <h2>{data.name}</h2>
+        <h3>{data.album.name}</h3>
+        <p>{data.artists[0].name}</p>
+        <button>select</button>
+      </div>
     </div>
   );
 }
+
 
 export default App;
