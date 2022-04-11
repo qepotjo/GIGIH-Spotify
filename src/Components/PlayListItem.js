@@ -3,18 +3,44 @@ import PlayList from './PlayList'
 // import {DATA_SPOTIFY} from '../data/data.js'
 import SearchBar from './SearchBar'
 import config from '../data/config.js'
+import Form from './Form'
 
 const PLaylistItem = () =>{
     const [accToken, setAccToken] = useState('');
     const [isLogin, setIsLogin] = useState(false);
     const [tracks, setTracks] = useState([]);
     const [selected, setSelected] = useState([]);
-    useEffect(() => {
-      const access_token= new URLSearchParams(window.location.hash).get('#access_token')
+    const [user, setUser] = useState({});
 
-      setAccToken(access_token);
-      setIsLogin(access_token !== null);
-    }, [])
+
+    useEffect(() => {
+      const accessTokenParams= new URLSearchParams(window.location.hash).get('#access_token')
+
+      if (accessTokenParams !== null) {
+        setAccToken(accessTokenParams);
+        setIsLogin(accessTokenParams !== null);
+
+        const setUserProfile = async () => {
+          try {
+            const requestOptions = {
+      headers: {
+        'Authorization': 'Bearer ' + accessTokenParams,
+        'Content-Type': 'application/json',
+      },
+    };
+    console.log(requestOptions);
+
+    const response = await fetch(`${config.SPOTIFY_BASE_URL}/me`, requestOptions).then(data => data.json());
+            console.log(response);
+            setUser(response);
+          } catch (e) {
+            alert(e);
+          }
+        }
+
+        setUserProfile();
+      }
+    }, []);
     const getLinkAuth = () =>{
         const state = Date.now().toString();
         const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
@@ -41,9 +67,13 @@ const PLaylistItem = () =>{
       return tracks.filter(track => selected.includes(track.uri));
     }
     return(
-        <div className="home">
+        <div>
+          <Form 
+            accessToken={accToken}
+            userId={user.id} 
+            uris={selected}/>
           <div className='search-bar'>
-            {!isLogin &&( <a href={getLinkAuth()}>Auth</a>)}
+            <a href={getLinkAuth()}>Spotify</a>
             <SearchBar accessToken={accToken} onSuccess={(tracks) => onSuccessSearch(tracks)}/>
           </div>
           <div className='songs'>
@@ -62,7 +92,7 @@ const PLaylistItem = () =>{
 }
 export default PLaylistItem;
 
-
+// a
 // class Home extends Component {  
 //   state = {
 //     accToken : '',
