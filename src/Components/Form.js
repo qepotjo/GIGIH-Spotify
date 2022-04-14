@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import config from '../data/config.js'
+import config from "../data/config.js"
+import { useSelector } from "react-redux";
 
 const Form = ({accessToken, userId, uris}) => {
     const [form, setForm] = useState({

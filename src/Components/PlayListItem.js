@@ -4,6 +4,9 @@ import PlayList from './PlayList'
 import SearchBar from './SearchBar'
 import config from '../data/config.js'
 import Form from './Form'
+import {useDispatch, useSelector} from 'react-redux';
+import {login} from '../Redux/redux.js';
+
 
 const PLaylistItem = () =>{
     const [accToken, setAccToken] = useState('');
@@ -11,6 +14,9 @@ const PLaylistItem = () =>{
     const [tracks, setTracks] = useState([]);
     const [selected, setSelected] = useState([]);
     const [user, setUser] = useState({});
+    const isLogin = useSelector(state => state.auth.isLogin);
+    const dispatch = useDispatch();
+
 
 
     useEffect(() => {
@@ -19,6 +25,7 @@ const PLaylistItem = () =>{
       if (accessTokenParams !== null) {
         setAccToken(accessTokenParams);
         setIsLogin(accessTokenParams !== null);
+        dispatch(login(accessTokenParams));
 
         const setUserProfile = async () => {
           try {
@@ -69,12 +76,12 @@ const PLaylistItem = () =>{
     return(
         <div>
           <Form 
-            accessToken={accToken}
             userId={user.id} 
             uris={selected}/>
           <div className='search-bar'>
             <a href={getLinkAuth()}>Spotify</a>
-            <SearchBar accessToken={accToken} onSuccess={(tracks) => onSuccessSearch(tracks)}/>
+            <SearchBar 
+            onSuccess={(tracks) => onSuccessSearch(tracks)}/>
           </div>
           <div className='songs'>
             {tracks.map(track => (

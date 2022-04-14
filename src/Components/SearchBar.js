@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import config from '../data/config.js'
+import { useSelector } from "react-redux"
+
 
  const SearchBar = (props) =>{
     const [text, setText] = useState('');
+    const accessToken = useSelector((state) => state.auth.accessToken);
     const handleInput = (e) =>{
         setText(e.target.value);
     }
@@ -11,7 +14,7 @@ import config from '../data/config.js'
 
         var requestOptions = {
             headers: {
-              'Authorization': 'Bearer ' + props.accessToken,
+              'Authorization': 'Bearer ' + accessToken,
               'Content-Type': 'application/json',
             }
           };
