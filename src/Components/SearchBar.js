@@ -41,7 +41,9 @@ import { useSelector } from "react-redux"
             required
             onChange={handleInput}
             />
-            <button id="btn__search" type='submit'>Search</button>
+            <Button variant="outlined" color="primary" >
+            Search
+            </Button>
         </form>
     )
   }
