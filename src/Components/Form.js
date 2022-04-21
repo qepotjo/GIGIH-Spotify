@@ -2,21 +2,21 @@ import React, {useState} from "react";
 import config from "../data/config.js"
 import { useSelector } from "react-redux";
 
-const Form = ({accessToken, userId, uris}) => {
-    const [form, setForm] = useState({
+const Form = ({userId, uris}) => {
+    const accessToken = useSelector((state) => state.auth.accessToken);
+
+
+    const [form, setForm] = useState({  
         title: '',
         description: ''
     }) 
-
     const handleChange = (e) =>{
         const { name, value } = e.target;
         setForm({ ...form, [name]: value });
     }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(form.title.length > 10){
-
             try {
                 const requestOptions = {
                     method: 'POST',
@@ -25,7 +25,7 @@ const Form = ({accessToken, userId, uris}) => {
                         'Content-Type': 'application/json',
                       }
                 }
-
+                
                 const optionsForm = {
                     ...requestOptions,
                     body: JSON.stringify({
@@ -35,22 +35,22 @@ const Form = ({accessToken, userId, uris}) => {
                         collaborative: false,
                     }),
                 }
-
+                
                 const responseForm = await fetch(`${config.SPOTIFY_BASE_URL}/users/${userId}/playlists`, optionsForm).then(data=> data.json());
-
+                
                 const optionsAddTrack = {
                     ...requestOptions,
                     body: JSON.stringify({
                         uris
                      }),
                 }
-
+                
                 await fetch(`${config.SPOTIFY_BASE_URL}/playlists/${responseForm.id}/tracks`, optionsAddTrack).then(data=> data.json());
-
-
+                
+                
                 setForm({ title: '', description: '' });
                 alert('Playlist created successfully');
-
+                
             } catch (error) {
             alert(error);
             }
@@ -58,7 +58,6 @@ const Form = ({accessToken, userId, uris}) => {
             alert('Title must be large 10 characters');
         }
     }
-
     return(
         <form className="create-form" onSubmit={handleSubmit}>
             <div className="input">
@@ -72,6 +71,8 @@ const Form = ({accessToken, userId, uris}) => {
                 <textarea 
                     name="description" 
                     id="description" 
+                    cols="53" 
+                    rows="3"
                     placeholder="Description"
                     value={form.description}
                     onChange = {handleChange}>
@@ -82,7 +83,5 @@ const Form = ({accessToken, userId, uris}) => {
             </div>
         </form>
     )
-
 }
 export default Form;
-	
