@@ -9,8 +9,6 @@ import {login} from '../Redux/redux.js';
 
 
 const PLaylistItem = () =>{
-    const [accToken, setAccToken] = useState('');
-    const [isLogin, setIsLogin] = useState(false);
     const [tracks, setTracks] = useState([]);
     const [selected, setSelected] = useState([]);
     const [user, setUser] = useState({});
@@ -23,8 +21,6 @@ const PLaylistItem = () =>{
       const accessTokenParams= new URLSearchParams(window.location.hash).get('#access_token')
 
       if (accessTokenParams !== null) {
-        setAccToken(accessTokenParams);
-        setIsLogin(accessTokenParams !== null);
         dispatch(login(accessTokenParams));
 
         const setUserProfile = async () => {
@@ -75,11 +71,12 @@ const PLaylistItem = () =>{
     }
     return(
         <div>
+          {isLogin &&(
           <Form 
             userId={user.id} 
-            uris={selected}/>
+            uris={selected}/>)}
           <div className='search-bar'>
-            <a href={getLinkAuth()}>Spotify</a>
+            {!isLogin &&( <a href={getLinkAuth()}>Auth</a>)}
             <SearchBar 
             onSuccess={(tracks) => onSuccessSearch(tracks)}/>
           </div>

@@ -3,6 +3,7 @@ import config from '../data/config.js'
 import { useSelector } from "react-redux"
 
 
+
  const SearchBar = (props) =>{
     const [text, setText] = useState('');
     const accessToken = useSelector((state) => state.auth.accessToken);
@@ -41,9 +42,7 @@ import { useSelector } from "react-redux"
             required
             onChange={handleInput}
             />
-            <Button variant="outlined" color="primary" >
-            Search
-            </Button>
+            <button type='submit'>Search</button>
         </form>
     )
   }
