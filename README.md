@@ -23,7 +23,7 @@
 - Go to the project folder
 
     ```bash
-    cd spotify-app
+    cd Gigih-spotify
     ```
 
 - Install dependencies
