@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import config from '../data/config.js'
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {login} from '../Redux/redux.js'
 import { useHistory } from "react-router-dom";
-
+import './index.css'
 const Auth = () =>{
    const dispatch = useDispatch();
 

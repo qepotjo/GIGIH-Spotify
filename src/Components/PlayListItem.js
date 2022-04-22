@@ -1,10 +1,10 @@
-import react, { useState} from 'react'
+import{ useState} from 'react'
 import PlayList from './PlayList'
 // import {DATA_SPOTIFY} from '../data/data.js'
 import SearchBar from './SearchBar'
 // import config from '../data/config.js'
 import Form from './Form'
-import {useSelector} from 'react-redux';
+
 // import {login} from '../Redux/redux.js';
 
 

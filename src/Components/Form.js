@@ -3,8 +3,9 @@ import config from "../data/config.js"
 import { useSelector } from "react-redux";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import './index.css'
 
-const Form = ({userId, uris}) => {
+const Form = ({userId,uris}) => {
     const accessToken = useSelector((state) => state.auth.accessToken);
 
 
@@ -63,7 +64,7 @@ const Form = ({userId, uris}) => {
     return(
         <form className="create-form" onSubmit={handleSubmit}>
             <div className="input">
-                <label id='text' textAlign="center">Create Playlist</label> <br/>
+                <label id='text'>Create Playlist</label> <br/>
                 <TextField fullWidth
                     placeholder="Title"
                     sx={{input: {textAlign: "center"}}}
