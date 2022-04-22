@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import config from '../data/config.js'
 import { useSelector } from "react-redux"
-
-
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import "./index.css"
 
  const SearchBar = (props) =>{
     const [text, setText] = useState('');
@@ -34,16 +35,23 @@ import { useSelector } from "react-redux"
         e.target.blur();
     }
      return(
-        <form className="form__search" onSubmit={onSubmit}>
-            <input
-            type="text"
-            placeholder="Search..."
-            className="form__search__input"
-            required
-            onChange={handleInput}
-            />
-            <button type='submit'>Search</button>
+
+        
+        <form onSubmit={onSubmit}>
+            
+             <TextField fullWidth  
+                    type="text"
+                    required
+                    sx={{input: {textAlign: "center"}}}
+                    onChange={handleInput}/>
+               
+                <Button variant="outlined" text>
+                     Search
+                </Button>
+             
         </form>
+        
+
     )
   }
 export default SearchBar;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./index.css"
+import Button from '@mui/material/Button';
 
 export default function PlayList({image, title, artists, toggleSelect }) {
   const [isSelected, setIsSelected] = useState(false);
@@ -23,7 +24,7 @@ export default function PlayList({image, title, artists, toggleSelect }) {
             </small>
           </div>
           <div class="value">
-            <button id="select" onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</button>
+            <Button className="button" id="select" onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</Button>
           </div>
         </div>
     

@@ -1,0 +1,90 @@
+  
+    .card{
+      box-shadow: 0 0 15px rgba(0,0,0,0.07);
+      margin: 1rem 0;
+      border-radius: 1rem;
+    }
+    .playlist-card{
+      display: flex;            
+      padding: 0.5rem;
+      margin: 8px 0;
+      border-radius: 10px;
+      padding: 1rem;        
+    }
+    .playlist-card .logo{
+      padding: 1rem;
+    }
+    .playlist-card .logo img{
+      height: 120px;
+      width: 120px;
+    }
+    .playlist-card .text{
+      flex-grow: 1;
+      line-height: 0.9
+    }
+    .playlist-card .title{
+      font-size: 1.5rem;
+      color: #333;      
+    }
+    .playlist-card .value{
+      display: flex;
+      align-items: center;
+    }   
+
+    
+    .playlist-card .label{
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      position: relative;
+      border-radius: 20px 0 0 20px;
+      right: -10px;
+    }
+
+    /*success-*/
+    .playlist-card-success .sub-title{
+      color: #bbb;      
+    }
+    .playlist-card-success .label{
+      color: #f8f8f8;
+      background-color: #5d9786;
+    }
+
+#text{
+    font-size: 20px;
+    color: black;
+    margin-left: 625px;
+}
+
+
+
+
+
+
+
+/*.playlist{
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  border: 1px solid white;
+  width: auto;
+  height: auto;
+  margin-top: -10px;
+  line-height: 25px;
+}
+.playlist__item{
+  margin-top: -10px;
+  line-height: 25px;
+}
+
+.playlist__image{
+  width: 120px;
+  height: 120px;
+}
+.playlist__title{
+  color: black;
+  font-size: medium;
+  font-weight: normal;
+}
+.playlist__artists{
+  font-size: small;
+}*/

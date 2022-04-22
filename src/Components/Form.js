@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import config from "../data/config.js"
 import { useSelector } from "react-redux";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const Form = ({userId, uris}) => {
     const accessToken = useSelector((state) => state.auth.accessToken);
@@ -61,23 +63,19 @@ const Form = ({userId, uris}) => {
     return(
         <form className="create-form" onSubmit={handleSubmit}>
             <div className="input">
-                <label id='text'>Create Playlist</label> <br/>
-                <input 
-                    type="text" 
-                    name="title"
-                    placeholder="Title..."
+                <label id='text' textAlign="center">Create Playlist</label> <br/>
+                <TextField fullWidth
+                    placeholder="Title"
+                    sx={{input: {textAlign: "center"}}}
                     onChange = {handleChange} /><br/>
-                <textarea 
-                    name="description" 
-                    id="description" 
-                    cols="53" 
-                    rows="3"
+                <TextField fullWidth 
                     placeholder="Description"
-                    onChange = {handleChange}>
-                </textarea><br/>
+                    sx={{input: {textAlign: "center"}}}
+                    onChange = {handleChange}/>
+                <br/>
             </div>
-            <div className="btn">
-                <button id='submit' type="submit">Create</button>
+            <div>
+                <Button variant="outlined" text>Create</Button>
             </div>
         </form>
     )
