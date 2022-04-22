@@ -66,7 +66,6 @@ const Form = ({userId, uris}) => {
                     type="text" 
                     name="title"
                     placeholder="Title..."
-                    value={form.title}
                     onChange = {handleChange} /><br/>
                 <textarea 
                     name="description" 
@@ -74,7 +73,6 @@ const Form = ({userId, uris}) => {
                     cols="53" 
                     rows="3"
                     placeholder="Description"
-                    value={form.description}
                     onChange = {handleChange}>
                 </textarea><br/>
             </div>

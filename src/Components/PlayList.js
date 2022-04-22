@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import "./index.css"
 
-export default function PlayList({image, songName, artists, toggleSelect }) {
+export default function PlayList({image, title, artists, toggleSelect }) {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleToggleSelect=()=>{
@@ -9,16 +10,34 @@ export default function PlayList({image, songName, artists, toggleSelect }) {
   }
 
   return (
-    <div className="body">
-      <img className="playlist__image" src={image} alt={songName} />
-      <h1>{songName}</h1>
-      <h2>{artists}</h2>
-      <button id="select" onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</button>
-      
-    </div>
+    <div class="playlist-card playlist-card-success card">
+          <div class="logo">
+            <img src={image} alt={title} />
+          </div>
+          <div class="text">
+            <p class="title">
+              {title}
+            </p>
+            <small class="sub-title">
+              {artists}
+            </small>
+          </div>
+          <div class="value">
+            <button id="select" onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</button>
+          </div>
+        </div>
+    
+   
   );
 }
-
+    // <div className="playlist">
+    //   <img className="playlist__image" src={image} alt={title} />
+    //   <h1 className="playlist__title">{title}</h1>
+    // <div className="playlist__item">
+    //   <h2 className="playlist__artists">{artists}</h2>
+    //   <button id="select" onClick={handleToggleSelect}>{isSelected ? 'Deselect' : 'Select'}</button>
+    //  </div>
+    //  </div> 
 
 // export default function PlayList({ image, songName, albumName, artists, url }) {
 //   return (
